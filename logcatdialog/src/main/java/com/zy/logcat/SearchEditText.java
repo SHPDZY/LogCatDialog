@@ -57,4 +57,10 @@ public class SearchEditText extends LinearLayout {
     public interface OnClickOkListener {
         void onOk(String content);
     }
+
+    public void setText(String text){
+        etContent.setText(text);
+        ivOk.setVisibility(VISIBLE);
+        etContent.setVisibility(VISIBLE);
+    }
 }

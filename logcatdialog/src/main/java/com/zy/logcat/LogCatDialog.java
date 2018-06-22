@@ -28,15 +28,20 @@ import java.util.List;
 
 import com.zy.logcat.R;
 
-public class LogCatDialog extends Dialog {
+class LogCatDialog extends Dialog {
 
     private String title = "Console";
 
     private static final int WHAT_NEXT_LOG = 778;
+    private static final int WHAT_STATUS_LOG = 779;
 
     private TextView tvLog;
 
     private TextView tvStatus;
+
+    private RadioGroup rgGrade;
+
+    private TextView tvTitle;
 
     private List<String> contentList = new ArrayList<>();
 
@@ -45,9 +50,18 @@ public class LogCatDialog extends Dialog {
 
 
     private String searchContent = "";
+    private String noContentHint = "没有log信息";
+    private String searchHint = "正在获取log信息";
 
-    /*显示级别，0 所有，1 system.out.println，2 警告级别,3 错误级别*/
+    /*显示级别，0 所有，1 系统，2 警告,3 错误*/
     private int showGrade = 0;
+
+
+    private boolean isRuning = true;
+    private ImageView ivDwon;
+    private SearchEditText etContent;
+    public String searchTag = "";//过滤tag
+
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
@@ -81,13 +95,36 @@ public class LogCatDialog extends Dialog {
                         }
                     }
                     break;
+                case WHAT_STATUS_LOG:
+                    if (contentList.size()>0) {
+                        tvStatus.setVisibility(View.GONE);
+                        tvLog.setVisibility(View.VISIBLE);
+                        if (isAutoFullScroll) {
+                            refreshLogView();
+                        }
+                    } else {
+                        tvStatus.setText(noContentHint);
+                        tvStatus.setVisibility(View.VISIBLE);
+                        tvLog.setVisibility(View.GONE);
+                    }
+                    break;
             }
         }
     };
 
-    private RadioGroup rgGrade;
 
-    private void init() {
+
+    LogCatDialog(@NonNull Context context) {
+        super(context);
+
+    }
+
+    public LogCatDialog(@NonNull Context context, @StyleRes int themeResId) {
+        super(context, themeResId);
+        init();
+    }
+
+    void init() {
         initView();
         new Thread(new Runnable() {
             @Override
@@ -115,10 +152,6 @@ public class LogCatDialog extends Dialog {
         }).start();
     }
 
-    public LogCatDialog(@NonNull Context context, @StyleRes int themeResId) {
-        super(context, themeResId);
-        init();
-    }
 
     /**
      * 设置搜索的内容(默认没有)
@@ -141,16 +174,16 @@ public class LogCatDialog extends Dialog {
     /**
      * 设置显示级别
      *
-     * @param showGrade
+     * @param showGrade 0 所有，1 系统，2 警告,3 错误
      */
     public void setShowGrade(int showGrade) {
         this.showGrade = showGrade;
     }
 
     /**
-     * 设置是时候显示级别过滤
+     * 设置是否显示级别过滤
      *
-     * @param isShowGrade 0 所有，1 System.out.println，2 警告级别,3 错误级别
+     * @param isShowGrade
      */
     public void setShowGrade(boolean isShowGrade) {
         if (isShowGrade) {
@@ -187,9 +220,8 @@ public class LogCatDialog extends Dialog {
                 showError(line);
             }
         }
-        if (isAutoFullScroll) {
-            refreshLogView();
-        }
+        mHandler.sendEmptyMessageDelayed(WHAT_STATUS_LOG,1000);
+
     }
 
     /**
@@ -211,7 +243,7 @@ public class LogCatDialog extends Dialog {
     }
 
     private void showLine(String line, String color) {
-        if (line.contains("http://")||line.contains("https://")) {
+        if (line.contains("http://") || line.contains("https://")) {
             String url = line.substring(line.indexOf("http"));
             tvLog.append(Html.fromHtml("<font color='" + color + "'>" + line.substring(0, line.indexOf("http")) + "</font>"));
             tvLog.append(Html.fromHtml("<a href='" + url + "'>" + url + "</a>"));
@@ -219,17 +251,6 @@ public class LogCatDialog extends Dialog {
             tvLog.append(Html.fromHtml("<font color='" + color + "'>" + line + "</font>"));
         }
     }
-
-    private boolean isRuning = true;
-    private ImageView ivDwon;
-    private SearchEditText etContent;
-    public String searchTag = "";//过滤tag
-
-    public LogCatDialog(@NonNull Context context) {
-        super(context);
-        init();
-    }
-
 
     /**
      * 关闭任务
@@ -254,11 +275,10 @@ public class LogCatDialog extends Dialog {
     private float y1 = 0;
     private float y2 = 0;
 
-    @SuppressLint("ClickableViewAccessibility")
     private void initView() {
         View view = View.inflate(getContext(), R.layout.logcat_dialog, null);
         setContentView(view);
-        TextView tvTitle = (TextView) view.findViewById(R.id.tv_title);
+        tvTitle = (TextView) view.findViewById(R.id.tv_title);
         tvTitle.setText(title);
         //日志级别
         rgGrade = (RadioGroup) view.findViewById(R.id.rg_grade);
@@ -280,16 +300,18 @@ public class LogCatDialog extends Dialog {
                 }
             }
         });
+        tvStatus = (TextView) view.findViewById(R.id.tv_status);
         etContent = (SearchEditText) view.findViewById(R.id.et_content);
         etContent.setOnClickOkListener(new SearchEditText.OnClickOkListener() {
             @Override
             public void onOk(String content) {
-                Toast.makeText(getContext(), "正在搜索["+content+"]", Toast.LENGTH_SHORT).show();
+                tvStatus.setText(searchHint);
+                tvStatus.setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(), "正在搜索[" + content + "]", Toast.LENGTH_SHORT).show();
                 searchContent(content);
             }
         });
         tvLog = (TextView) view.findViewById(R.id.tv_consol);
-        tvStatus = (TextView) view.findViewById(R.id.tv_status);
         tvLog.setMovementMethod(ScrollingMovementMethod.getInstance());
         tvLog.setMovementMethod(LinkMovementMethod.getInstance());
         tvLog.setOnTouchListener(TvOnTouchListener);
@@ -319,9 +341,32 @@ public class LogCatDialog extends Dialog {
         int height = wm.getDefaultDisplay().getHeight();
         Window dialogWindow = getWindow();
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.width = width * 7 / 8; // 宽度
-        lp.height = height * 7 / 8; // 高度
+        lp.width = width * 9 / 10; // 宽度
+        lp.height = height * 8 / 10; // 高度
         dialogWindow.setAttributes(lp);
+        setDefault();
+    }
+
+    void setDefault() {
+        if (!TextUtils.isEmpty(searchContent)) {
+            etContent.setText(searchContent);
+            searchContent(searchContent);
+        }
+        switch (showGrade) {
+            case 0:
+                rgGrade.check(R.id.rb_all);
+                break;
+            case 1:
+                rgGrade.check(R.id.rb_system_out);
+                break;
+            case 2:
+                rgGrade.check(R.id.rb_warming);
+                break;
+            case 3:
+                rgGrade.check(R.id.rb_error);
+                break;
+
+        }
     }
 
     /**
@@ -339,24 +384,14 @@ public class LogCatDialog extends Dialog {
      * @param content
      */
     private void searchContent(String content) {
-        tvStatus.setText("正在搜索中");
-        tvStatus.setVisibility(View.VISIBLE);
         searchContent = content;
         tvLog.setText("--------------search info------------\n");
-        boolean has = false;
         for (String item : contentList) {
             if (item.contains(content)) {
                 append(item);
-                has = true;
             }
         }
-        if (has){
-            tvStatus.setVisibility(View.GONE);
-        }else {
-            tvStatus.setText("没有搜索到log");
-            tvStatus.setVisibility(View.VISIBLE);
 
-        }
     }
 
     View.OnTouchListener TvOnTouchListener = new View.OnTouchListener() {

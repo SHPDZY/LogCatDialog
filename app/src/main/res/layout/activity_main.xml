@@ -3,11 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.zy.logcatdemo.MainActivity">
 
     <Button
         android:layout_width="match_parent"
-        android:text="打开LogCatDialog"
+        android:text="打开定时器打印log"
+        android:onClick="onTimer"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="关闭定时器打印log"
+        android:onClick="onTimeroff"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="open logcat"
         android:onClick="onTest"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="open logcat自定义标题 "
+        android:onClick="onTest2"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="open logcat自定义搜索内容"
+        android:onClick="onTest3"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="open logcat自定义目标tag"
+        android:onClick="onTest4"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:text="open logcat自定义log级别"
+        android:onClick="onTest5"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="清除LogCatDialog"
+        android:onClick="onClear"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

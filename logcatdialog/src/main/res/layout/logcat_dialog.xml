@@ -15,6 +15,7 @@
         android:focusableInTouchMode="true"
         android:padding="5dp"
         android:scrollbars="vertical"
+        android:visibility="gone"
         android:textColor="@android:color/black"
         android:textSize="10sp" />
 
@@ -29,8 +30,8 @@
         android:focusableInTouchMode="true"
         android:padding="5dp"
         android:scrollbars="vertical"
-        android:visibility="gone"
-        android:text="正在搜索中"
+        android:visibility="visible"
+        android:text="正在获取log信息"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
