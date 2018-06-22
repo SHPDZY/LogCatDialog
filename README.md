@@ -21,17 +21,28 @@
 ## 效果图
 
 ####首页
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img1.jpg)
+
+![首页](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134454152964629496115.png)
+
 ####默认方式打开
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img_default.jpg)
+
+![默认方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134501152964630120858.png)
+
 ####自定义标题方式打开
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img_title.png)
+
+![自定义标题方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134458152964629881244.png)
+
 ####自定义搜索内容方式打开
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img_search.png)
+
+![自定义搜索内容方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134503152964630318296.png)
+
 ####自定义目标TAG方式打开
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img_tag.png)
+
+![自定义目标TAG方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134509152964630918228.png)
+
 ####自定义LOG级别方式打开
-![](https://github.com/SHPDZY/LogCatDialog/blob/master/img/img_level.png)
+
+![自定义LOG级别方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134507152964630726508.png)
 
 
 
