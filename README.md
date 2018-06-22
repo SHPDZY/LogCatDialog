@@ -20,29 +20,39 @@
 
 ## 效果图
 
-####首页
+首页写了几个功能测试用例，您可根据需求组合搭配使用。
 
-![首页](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134454152964629496115.png)
+![首页](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622135955152964719564867.png)
+
+##
 
 ####默认方式打开
 
-![默认方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134501152964630120858.png)
+![默认方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140009152964720960527.png)
+
+##
+
 
 ####自定义标题方式打开
 
-![自定义标题方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134458152964629881244.png)
+![自定义标题方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622135958152964719853179.png)
+
+##
 
 ####自定义搜索内容方式打开
 
-![自定义搜索内容方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134503152964630318296.png)
+![自定义搜索内容方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140004152964720426154.png)
+
+##
 
 ####自定义目标TAG方式打开
 
-![自定义目标TAG方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134509152964630918228.png)
+![自定义目标TAG方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140001152964720177860.png)
 
+##
 ####自定义LOG级别方式打开
 
-![自定义LOG级别方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622134507152964630726508.png)
+![自定义LOG级别方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140007152964720766879.png)
 
 
 
