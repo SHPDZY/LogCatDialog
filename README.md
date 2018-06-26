@@ -9,7 +9,25 @@
 - 支持根据tag筛选
 - 支持根据log级别显示
 
-## 使用
+## 如何引入
+
+### 第1步 将JitPack存储库添加到您的构建文件  
+将其添加到存储库末尾的根build.gradle中：
+
+       allprojects {
+            repositories {
+                ...
+                maven { url 'https://jitpack.io' }
+            }
+        }
+        
+### 第2步 添加依赖关系
+    
+        dependencies {
+        	        implementation 'com.github.SHPDZY:LogCatDialog:v1.0.1'
+        	}
+
+## 如何使用
 
         LogCatControl.getInstance(this)
                 .setTitle("自定义标题")
@@ -20,26 +38,26 @@
 
 ## 效果图
 
-###首页写了几个功能测试用例，您可根据需求组合搭配使用。
+### 首页写了几个功能测试用例，您可根据需求组合搭配使用。
 
 ![首页](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622135955152964719564867.png)
 
 ##
 
-###默认方式打开
+### 默认方式打开
 
 ![默认方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140009152964720960527.png)
 
 ##
 
 
-###自定义标题方式打开
+### 自定义标题方式打开
 
 ![自定义标题方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622135958152964719853179.png)
 
 ##
 
-###自定义搜索内容方式打开
+### 自定义搜索内容方式打开
 
 ![自定义搜索内容方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140004152964720426154.png)
 
@@ -50,7 +68,7 @@
 ![自定义目标TAG方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140001152964720177860.png)
 
 ##
-###自定义LOG级别方式打开
+### 自定义LOG级别方式打开
 
 ![自定义LOG级别方式打开](http://blog.9aiplay.com/zb_users/upload/2018/06/20180622140007152964720766879.png)
 
@@ -58,5 +76,5 @@
 
 ## 作者信息：
 
-* [zhangyong](http://blog.9aiplay.com)
+* [zhangyong](http://9aiplay.com)
 
