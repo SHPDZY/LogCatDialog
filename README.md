@@ -13,7 +13,7 @@
 
 ### Android Studio 引入
 
-### 第1步 将JitPack存储库添加到您的构建文件  
+#### 第1步 将JitPack存储库添加到您的构建文件  
 将其添加到存储库末尾的根build.gradle中：
 
        allprojects {
@@ -23,14 +23,14 @@
             }
         }
         
-### 第2步 添加依赖关系
+#### 第2步 添加依赖关系
     
         dependencies {
         	        implementation 'com.github.SHPDZY:LogCatDialog:v1.0.1'
         }
         	
         	
-## Eclipse 引入
+### Eclipse 引入
 建议使用As，方便版本更新。
 
         dependencies {
