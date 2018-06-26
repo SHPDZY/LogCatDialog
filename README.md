@@ -11,6 +11,8 @@
 
 ## 如何引入
 
+### Android Studio 引入
+
 ### 第1步 将JitPack存储库添加到您的构建文件  
 将其添加到存储库末尾的根build.gradle中：
 
@@ -25,16 +27,29 @@
     
         dependencies {
         	        implementation 'com.github.SHPDZY:LogCatDialog:v1.0.1'
-        	}
+        }
+        	
+        	
+## Eclipse 引入
+建议使用As，方便版本更新。
+
+        dependencies {
+                  compile project(path: ':logcatdialog')
+        }
+    
 
 ## 如何使用
-
+        
+        //显示dialog
         LogCatControl.getInstance(this)
                 .setTitle("自定义标题")
                 .setSearchContent("自定义搜索内容")
                 .setSearchTag("自定义Tag")
                 .setShowGrade(3) //设置显示级别:0 所有，1 系统，2 警告,3 错误
                 .show();
+                
+        //清除dialog
+        LogCatControl.getInstance(this).clear();
 
 ## 效果图
 
