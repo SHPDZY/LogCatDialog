@@ -26,7 +26,7 @@
 #### 第2步 添加依赖关系
     
         dependencies {
-        	        implementation 'com.github.SHPDZY:LogCatDialog:v1.0.1'
+        	   compile 'com.github.SHPDZY:LogCatDialog:1.0.2'
         }
         	
         	
@@ -34,7 +34,7 @@
 建议使用As，方便版本更新。
 
         dependencies {
-                  compile project(path: ':logcatdialog')
+               compile project(path: ':logcatdialog')
         }
     
 
