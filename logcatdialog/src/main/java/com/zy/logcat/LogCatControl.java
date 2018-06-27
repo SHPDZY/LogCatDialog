@@ -12,11 +12,10 @@ import android.view.WindowManager;
 
 public class LogCatControl {
     private static LogCatControl logCatControl = null;
-    private final Display display;
     private Context context;
     private LogCatDialog catDialog;
 
-    public static LogCatControl getInstance(Context context) {
+    public static LogCatControl getBuilder(Context context) {
         if (logCatControl == null) {
             synchronized (LogCatControl.class) {
                 if (logCatControl == null) {
@@ -29,13 +28,10 @@ public class LogCatControl {
 
     public LogCatControl(Context context) {
         this.context = context;
-        WindowManager windowManager = (WindowManager) context
-                .getSystemService(Context.WINDOW_SERVICE);
-        display = windowManager.getDefaultDisplay();
     }
 
     private LogCatControl builder() {
-        catDialog = new LogCatDialog(context);
+        catDialog = new LogCatDialog(context,R.style.dialog);
         return this;
     }
 

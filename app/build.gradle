@@ -5,14 +5,22 @@ android {
     defaultConfig {
         applicationId "com.zy.logcatdemo"
         minSdkVersion 11
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            // 混淆
             minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+            // 混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -25,6 +33,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-    testCompile 'junit:junit:4.12'
+//    compile 'com.github.SHPDZY:LogCatDialog:v1.0.1'
     compile project(path: ':logcatdialog')
+    testCompile 'junit:junit:4.12'
 }

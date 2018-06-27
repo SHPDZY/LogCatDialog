@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        LogCatControl.getInstance(this)
+//        LogCatControl.getBuilder(this)
 //                .setTitle("自定义标题")
 //                .setSearchContent("自定义搜索内容")
 //                .setSearchTag("自定义Tag")
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onTest(View view) {
-        LogCatControl.getInstance(this).clear();
-        LogCatControl.getInstance(this).show();
+        LogCatControl.getBuilder(this).clear();
+        LogCatControl.getBuilder(this).show();
     }
 
     /**
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onTest2(View view) {
-        LogCatControl.getInstance(this).clear();
-        LogCatControl.getInstance(this).setTitle("test").show();
+        LogCatControl.getBuilder(this).clear();
+        LogCatControl.getBuilder(this).setTitle("test").show();
     }
 
 
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onTest3(View view) {
-        LogCatControl.getInstance(this).clear();
-        LogCatControl.getInstance(this).setSearchContent("search").show();
+        LogCatControl.getBuilder(this).clear();
+        LogCatControl.getBuilder(this).setSearchContent("search").show();
     }
 
 
@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onTest4(View view) {
-        LogCatControl.getInstance(this).clear();
-        LogCatControl.getInstance(this).setSearchTag("MainActivity").show();
+        LogCatControl.getBuilder(this).clear();
+        LogCatControl.getBuilder(this).setSearchTag("MainActivity").show();
     }
 
 
@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onTest5(View view) {
-        LogCatControl.getInstance(this).clear();
-        LogCatControl.getInstance(this).setShowGrade(3).show();
+        LogCatControl.getBuilder(this).clear();
+        LogCatControl.getBuilder(this).setShowGrade(3).show();
     }
 
     /**
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void onClear(View view) {
-        LogCatControl.getInstance(this).clear();
+        LogCatControl.getBuilder(this).clear();
     }
 
     /**
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         stopTimer();
-        LogCatControl.getInstance(this).clear();
+        LogCatControl.getBuilder(this).clear();
     }
 
     private void startTimer() {

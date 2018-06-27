@@ -121,7 +121,6 @@ class LogCatDialog extends Dialog {
 
     public LogCatDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
-        init();
     }
 
     void init() {
@@ -277,6 +276,7 @@ class LogCatDialog extends Dialog {
 
     private void initView() {
         View view = View.inflate(getContext(), R.layout.logcat_dialog, null);
+
         setContentView(view);
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
         tvTitle.setText(title);

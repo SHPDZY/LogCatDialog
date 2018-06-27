@@ -41,7 +41,7 @@
 ## 如何使用
         
         //显示dialog
-        LogCatControl.getInstance(this)
+        LogCatControl.getBuilder(this)
                 .setTitle("自定义标题")
                 .setSearchContent("自定义搜索内容")
                 .setSearchTag("自定义Tag")
@@ -49,7 +49,7 @@
                 .show();
                 
         //清除dialog
-        LogCatControl.getInstance(this).clear();
+        LogCatControl.getBuilder(this).clear();
 
 ## 效果图
 
